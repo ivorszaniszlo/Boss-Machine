@@ -8,7 +8,7 @@ module.exports = app;
 /* Do not change the following line! It is required for testing and allowing
 *  the frontend application to interact as planned with the api server
 */
-const PORT = process.env.PORT || 4002;
+const PORT = process.env.PORT || 4001;
 
 // Add middleware for handling CORS requests from index.html
 app.use(cors());
@@ -23,8 +23,7 @@ app.use('/api', apiRouter);
 // This conditional is here for testing purposes:
 if (!module.parent) { 
   // Add your code to start the server listening at PORT below:
-  app.listen(PORT, function(err){
-    if (err) console.log(err);
-    console.log("Server listening on PORT", PORT);
+  app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
   });
 }

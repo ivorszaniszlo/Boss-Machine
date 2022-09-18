@@ -20,6 +20,8 @@ const {
     updateInstanceInDatabase
 } = require('./db');
 
+const checkMillionDollarIdea = require('./checkMillionDollarIdea');
+
 ideasRouter.param('ideaId', (req, res, next, id) => {
   const idea = getFromDatabaseById('ideas', id);
   if (idea) {
@@ -35,7 +37,7 @@ ideasRouter.get('/', (req, res) => {
     res.send(getAllFromDatabase('ideas'));
 });
 
-ideasRouter.post('/', (req, res) => {
+ideasRouter.post('/', checkMillionDollarIdea, (req, res) => {
     const newIdea = addToDatabase('ideas', req.body);
     res.status(201).send(newIdea);
 });
@@ -44,9 +46,12 @@ ideasRouter.get('/:ideaId', (req, res) => {
     res.send(req.idea);
 });
 
-ideasRouter.put('/:ideaId', (req, res) => {
+ideasRouter.put('/:ideaId', checkMillionDollarIdea, (req, res) => {
     let updatedIdea = updateInstanceInDatabase('ideas', req.body);
-    res.status(201).send(updatedIdea);
+    console.log(res.status);
+    if(res.status !== 400) {
+        res.status(201).send(updatedIdea);
+    }
 });
 
 ideasRouter.delete('/:ideaId', (req, res) => {
