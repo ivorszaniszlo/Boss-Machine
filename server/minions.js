@@ -1,21 +1,3 @@
-/*Required
-
-/api/minions
-
-GET /api/minions to get an array of all minions. - OK
-POST /api/minions to create a new minion and save it to the database. OK
-GET /api/minions/:minionId to get a single minion by id. - OK
-PUT /api/minions/:minionId to update a single minion by id. - OK
-DELETE /api/minions/:minionId to delete a single minion by id.- OK 
-
-/api/minions/work
-
-GET /api/minions/:minionId/work to get an array of all work for the specified minon. - OK
-POST /api/minions/:minionId/work to create a new work object and save it to the database. - OK
-PUT /api/minions/:minionId/work/:workId to update a single work by id. - OK
-DELETE /api/minions/:minionId/work/:workId to delete a single work by id. - Ok
-
-*/
 const minionsRouter = require('express').Router();
 
 module.exports = minionsRouter;
